@@ -75,16 +75,6 @@ class Input:
 
                 cells = cell_detection.get_extracted()
 
-
-
-
-
-                # array_detection = ArrayDetection.ArrayDetection(frame, panel_type).get_extracted()
-
-                # panel_detection = PanelDetection.PanelDetection(array_detection, panel_type, no_panels).get_extracted()
-
-                # cell_detection = CellDetection.CellDetection(panel_detection, panel_type, no_cells_per_panel).get_extracted()
-
                 count = 0
                 for panel in cells:
                     count += len(panel)
