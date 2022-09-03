@@ -1,18 +1,17 @@
 import cv2
 import os
 import glob
+import json
 import ArrayDetection
 import PanelDetection
 import CellDetection
 import Statistics
 
 class Input:
-    def __init__(self, input_path):
-        self.input_path = input_path
+    def __init__(self) -> None:
+        pass
 
-
-    def get_images(self, file_type):
-        path = self.input_path
+    def get_images(self, path, file_type):
         os.chdir(path)
         images = []
 
@@ -39,18 +38,12 @@ class Input:
 
         return images
 
-    def get_image(self, image_name):
-        path = self.input_path
-        os.chdir(path)
-        import_img = cv2.imread(image_name)
-
+    def get_image(self, path):
+        import_img = cv2.imread(path)
         return import_img
 
-    def get_video(self, video_name):
-        path = self.input_path
-        os.chdir(path)
-
-        self.video_capture = cv2.VideoCapture(video_name)
+    def get_video(self, path):
+        self.video_capture = cv2.VideoCapture(path)
         self.video_fps = self.video_capture.get(cv2.CAP_PROP_FPS)
         self.video_width = self.video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)
         self.video_height = self.video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)
@@ -102,5 +95,12 @@ class Input:
 
         return frames
 
-    def dir_test(self):
-        return os.getcwd().split('/')[-1] == 'input' and os.getcwd().split('/')[-2] == 'input'
+    def read_json_config(self, config_file):
+        # Test if config file exists
+        if os.path.isfile(config_file):
+            with open(config_file) as f:
+                data = json.load(f)
+            return data
+        else:
+            print("Error: Config file does not exist")
+            exit()

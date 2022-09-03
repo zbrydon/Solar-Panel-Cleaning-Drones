@@ -4,6 +4,7 @@ class InputType(Enum):
     IMAGE = 1
     IMAGES = 2
     VIDEO = 3
+    DRONE = 4
 
 class PanelType(Enum):
     BLUE = 1

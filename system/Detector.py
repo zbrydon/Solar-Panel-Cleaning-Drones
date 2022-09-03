@@ -81,6 +81,8 @@ class Detector:
                             points = self.order_points(points)
                         except ValueError:
                             continue
+                        except IndexError:
+                            continue
 
                         self.output_result(points, filtered_contours)
 
@@ -338,12 +340,13 @@ class Detector:
                 corners = cv2.cornerSubPix(thresh,np.float32(centroids),(self.corner_group, self.corner_group),(-1,-1),criteria)
             except Exception as e:
                 self.draw_contours(input_image, contours, color = (0, 0, 255), thickness = 2)
-                cv2.imshow("original", input_image)
-                if cv2.waitKey(0) & 0xFF == ord('q'):
-                    cv2.destroyAllWindows()
-                cv2.imshow("thresh", thresh)
-                if cv2.waitKey(0) & 0xFF == ord('q'):
-                    cv2.destroyAllWindows()
+                if self.display:
+                    cv2.imshow("original", input_image)
+                    if cv2.waitKey(0) & 0xFF == ord('q'):
+                        cv2.destroyAllWindows()
+                    cv2.imshow("thresh", thresh)
+                    if cv2.waitKey(0) & 0xFF == ord('q'):
+                        cv2.destroyAllWindows()
                 print(e)
                 corners = []
 

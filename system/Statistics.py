@@ -12,14 +12,12 @@ class Statistics:
         if NUMBER_OF_ARRAYS != None:
             print("Number of Arrays Expected: {}".format(NUMBER_OF_ARRAYS))
             print('Percentage of Cells Detected: ' + str(round(number_of_arrays/NUMBER_OF_ARRAYS * 100, 2) ) + '%')
-        # else:
-        #     print('Percentage of Cells Detected: None')
+
         print("Number of Panels Detected: {}".format(panels))
         if NUMBER_OF_PANELS != None:
             print("Number of Panels Expected: {}".format(NUMBER_OF_PANELS))
             print('Percentage of Cells Detected: ' + str(round(panels/NUMBER_OF_PANELS * 100, 2) ) + '%')
-        # else:
-        #     print('Percentage of Cells Detected: None')
+
         print("Number of Cells Detected: {}".format(cells))
         if NUMBER_OF_CELLS_PER_PANEL != None:
             cells_to_detect = (NUMBER_OF_PANELS * NUMBER_OF_CELLS_PER_PANEL) - num_covered
@@ -28,26 +26,12 @@ class Statistics:
             print('Percentage of Cells Detected: ' + str(percentage) + '%')
             error = round((abs(cells - cells_to_detect)/cells_to_detect) * 100, 2)
             print('Error: {}%'.format(error))
-        # else:
-        #     print("Number of Cells Expected: None")
-        #     print('Percentage of Cells Detected: None')
-        #     print('Error: Unknown')
 
         print("====================================")
-
-        # print(os.getcwd())
-        # if not self.dir_test():
-        #     print(os.getcwd())
-        #     print(os.path.dirname(__file__))
-        #     os.chdir('./output')
 
         if NUMBER_OF_ARRAYS != None and NUMBER_OF_PANELS != None and NUMBER_OF_CELLS_PER_PANEL != None:
             file_name = output + '/' + 'summary.csv'
             self.write_to_csv_error(file_name, num_covered, cells, cells_to_detect, error, itt)
-
-
-        # if self.dir_test():
-        #     os.chdir('./..')
 
     def write_to_csv_error(self, file_name, num_covered, num_detected, cells_to_detect, error, itt):
         print(os.getcwd())
