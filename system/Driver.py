@@ -225,10 +225,10 @@ class Driver:
 
         if image_name == "":
             print("Invalid image name")
-            return self.get_image()
+            return self.get_image_name()
         if not os.path.isfile(self.input_path + "/" + image_name + "." + file_extension):
             print("Invalid image name")
-            return self.get_image()
+            return self.get_image_name()
 
         try:
             data = image_name.split("-")
