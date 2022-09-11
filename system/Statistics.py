@@ -34,7 +34,6 @@ class Statistics:
             self.write_to_csv_error(file_name, num_covered, cells, cells_to_detect, error, itt)
 
     def write_to_csv_error(self, file_name, num_covered, num_detected, cells_to_detect, error, itt):
-        print(os.getcwd())
 
         # Write to CSV
         try:
@@ -57,5 +56,3 @@ class Statistics:
 
                 writer.writerow({'Number of cells covered': num_covered, 'Number of cells un-covered':cells_to_detect, 'Number of cells detected': num_detected, 'Error': error, 'Iteration': itt})
 
-    def dir_test(self):
-        return os.getcwd().split('/')[-1] == 'output'
