@@ -6,4 +6,4 @@ Run: `python3 Driver.py -input input.json`
 
 
 ## System Architecture Diagram
-![System Diagram](System_Diagram.jpg "System Diagram")
+![System Diagram](./../System_Diagram.jpg "System Diagram")
