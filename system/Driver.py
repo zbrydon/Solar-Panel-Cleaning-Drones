@@ -12,8 +12,8 @@ import sys
 class Driver:
     def __init__(self):
         self.input_type = None
-        self.input_path = "/input"
-        self.output_path = "/output"
+        self.input_path = "./input"
+        self.output_path = "./output"
         self.file_type = None
         self.panel_type = None
         self.no_arrays = None
@@ -42,6 +42,8 @@ class Driver:
                 self.no_panels = data['no_panels']
                 self.no_cells_per_panel = data['no_cells_per_panel']
                 self.no_cells_covered = data['no_cells_covered']
+
+                self.path_existence_check(self.output_path)
 
                 if self.input_type == Options.InputType.IMAGE.value:
                     self.image_detection()
@@ -183,6 +185,10 @@ class Driver:
 
         statistics = Statistics.Statistics()
         statistics.print_image_stats(self.output_path, len(array_detection), self.no_arrays, len(panel_detection), self.no_panels, count, self.no_cells_per_panel, self.no_cells_covered)
+
+    def path_existence_check(self, path):
+        if not os.path.exists(path):
+            os.makedirs(path)
 
     def menu(self, enum, name):
         print("Please select an " + name + " type:")
