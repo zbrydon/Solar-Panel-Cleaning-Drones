@@ -12,8 +12,8 @@ import sys
 class Driver:
     def __init__(self):
         self.input_type = None
-        self.input_path = "./input"
-        self.output_path = "./output"
+        self.input_path = "/input"
+        self.output_path = "/output"
         self.file_type = None
         self.panel_type = None
         self.no_arrays = None
@@ -227,6 +227,7 @@ class Driver:
             print("Invalid image name")
             return self.get_image_name()
         if not os.path.isfile(self.input_path + "/" + image_name + "." + file_extension):
+            print(self.input_path + "/" + image_name + "." + file_extension)
             print("Invalid image name")
             return self.get_image_name()
 
